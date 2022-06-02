@@ -1,0 +1,108 @@
+1. CPU 스케줄링
+
+# FCFS. First-Come First-Served
+
+- 프로세스 도착 순서대로 스케줄
+
+# SJF. Shortest-Job-First
+
+- 금번 CPU 사용시간이 가장 짧은 프로세스를 제일 먼저 스케줄
+- SJF는 minimum average waiting time을 보장
+- starvation(기아 현상) 발생 가능. 형평성 문제
+
+# RR. Round Robin
+
+- 각 프로세스는 동일 크기의 CPU 할당시간을 가짐
+- 할당시간이 끝나면 인터럽트가 발생하여 프로세스는 CPU를 빼앗기고 CPU 큐의 제일 뒤에 줄을 섬
+- n 개의 프로세스가 CPU 큐에 있는 경우
+    => 어떤 프로세스도 (n-1) * 할당시간 이상 기다리지 않음
+    => 대기시간이 프로세스의 CPU 사용시간에 비례(I/O로 빠지거나 CPU에서 다시 기다리거나)
+
+2. 메모리 관리
+
+- 1. 디스크[파일시스템]의 파일이 실행되면 가상 메모리에 프로세스 생성
+- 2. 프로세서에서 당장 필요한 부분만 메모리에 올라감
+- 3. 메모리가 다 차게 되면 디스크[스왑영역]에 보관. 메모리의 연장 공간
+
+# LRU vs LFU
+
+가득 찬 메모리에서 스왑영역으로 메모리를 보내는 방법
+
+CPU가 요청한 페이지 순서에 따라
+
+- LRU: 가장 오래전에 참조한 페이지를 삭제
+- LFU: 참조 횟수가 가장 적은 페이지를 삭제
+
+3. 디스크 스케줄링
+
+# 디스크 접근 시간(Access time)의 구성
+
+- 탐색시간(Seek time)
+    - 헤드를 해당 트랙(실린더)으로 움직이는데 걸리는 시간
+- 회전지연(Rotational latency)
+    - 헤드가 원하는 섹터에 도달하기까지 걸리는 시간
+- 전송시간(Transfer time)
+    - 실제 데이터의 전송 시간
+
+# 디스크 스케줄링(Disk Scheduling)
+
+- seek time을 최소화하는 것이 목표
+- seek time = seek distance
+
+# FCFS. First-Come First-Served
+
+# SSTF. Shortest Seek Time First
+
+- starvation 문제
+
+# SCAN
+
+- 헤드가 디스크의 한쪽 끝에서 다른쪽 끝으로 이동하며 가는 길목에 있는 모든 요청을 처리한다.
+- 다른 한쪽 끝에 도달하면 역방향으로 이동하며 오는 길목에 있는 모든 요청을 처리하며 다시 반대쪽 끝으로 이동한다.
+
+4. 저장장치 계층구조와 캐싱(caching)
+
+[Primary(Executable. CPU 직접 접근 가능)]
+- CPU -
+- Cache Memory -
+- Main Memory -
+[Secondary]
+- Magnetic Disk -
+- Optical Disk -
+- Magnetic Tape -
+
+상위 계층일수록 Speed / Cost / Voladity(휘발성) up
+하위 계층일수록 Speed / Cost / Voladity down
+
+caching: copying information into faster storage system
+
+5. 플래시메모리
+
+# 플래시메모리
+
+- 반도체장치(하드디스크: 마그네틱)
+- NAND형(스토리지), NOR형(임베디드 코드저장용)
+
+# 플래시메모리의 특징
+
+- Nonvolatile
+- Low power consumption
+- Shock resistance
+- Small size
+- Lightweight
+- 쓰기 횟수 제약
+
+# 플래시메모리의 사용 형태
+
+- 휴대폰, PDA 등 임베디드 시스템 구성용
+- USB용 메모리 스틱
+- 디지털카메라 등의 SD 카드, CompactFlash, Smart Media card
+- 모바일 장치 뿐 아니라 대용량 시스템에서 SSD(Solid State Drive)란 이름으로 하드디스크 대체 시도
+
+6. 운영체제의 종류
+
+# 서버용, PC용, 스마트디바이스용 운영체제
+
+# 공개 소프트웨어(Open Source Software)
+
+- Linux, Android
