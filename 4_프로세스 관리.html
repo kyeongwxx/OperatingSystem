@@ -1,0 +1,41 @@
+1. 프로그램의 실행(메모리 load)
+
+    # Virtual memory(논리적 주소) -> Address translation -> Physical memory(물리적 주소)
+
+    # Virtual memory
+        - stack
+        - data
+        - code
+
+2. 커널 주소 공간의 내용
+
+    # code
+        - 시스템콜, 인터럽트 처리 코드
+        - 자원 관리를 위한 코드
+        - 편리한 서비스 제공을 위한 코드
+    
+    # data
+        - PCB(Process Control Block)
+        - CPU, mem, disk
+
+    # stack
+        - Process A의 커널 스택
+        - Process B의 커널 스택
+
+3. 사용자 프로그램이 사용하는 함수
+
+    # 함수(function)
+        - 사용자 정의 함수(프로세스의 Address space -> code)
+            - 자신의 프로그램에서 정의한 함수
+        - 라이브러리 함수(프로세스의 Address space -> code)
+            - 자신의 프로그램에서 정의하지 않고 갖다 쓴 함수
+            - 자신의 프로그램의 실행 파일에 포함되어 있다.
+        - 커널 함수(Kernel Address space -> code)
+            - 운영체제 프로그램의 함수
+            - 커널 함수의 호출 = 시스템 콜
+
+4. 프로그램의 실행
+
+    # Promgram begins -> System call -> Return from kernel -> System call -> Program ends
+                 [user mode]     [kernel mode]         [user mode]   [kernel mode] 
+                  A 주소공간      kernel 주소공간        A 주소공간     kernel 주소공간
